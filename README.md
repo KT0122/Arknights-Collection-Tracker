@@ -1,2 +1,2 @@
-# legaiabay.github.io
-Experimental stash
+# Arknights Collection Tracker
+An attempt to update the Arknights Collection Tracker found in this github repo: https://github.com/legaiabay/legaiabay.github.io, credit goes to Abdul Khobir Fauzi/legaiabay
