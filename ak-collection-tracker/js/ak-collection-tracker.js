@@ -13,6 +13,18 @@ let total_chara_rarity_en = [0,0,0,0,0,0];
 let chara_rarity_count = [0,0,0,0,0,0];
 let background_color = "#1b262c"
 
+function character_rarity(character, total, total_count, character_count) {
+    selected_chara = character;
+    selected_count = total;
+    document.querySelectorAll(".selected").forEach((_element) => {
+        _element.innerHTML = total;
+    });
+    for(let i = 1; i <= character_count.length; i++) {
+        character_count[i - 1] = total_count[i - 1];
+        document.querySelector("#rarity-" + i).innerHTML = character_count[i - 1];
+    }
+}
+
 ready = (fn) => {
     if (document.readyState !== 'loading') {
         fn();
@@ -453,6 +465,8 @@ if (typeof window !== "undefined") {
             });
 
             if (selected_server === "en") {
+                character_rarity(selected_chara_all_en, current_total_operator_en, total_chara_rarity_en, chara_rarity_count);
+                /*
                 selected_chara = selected_chara_all_en;
                 selected_count = current_total_operator_en;
                 document.querySelectorAll(".selected").forEach((_element) => {
@@ -462,7 +476,11 @@ if (typeof window !== "undefined") {
                     chara_rarity_count[i - 1] = total_chara_rarity_en[i - 1];
                     document.querySelector("#rarity-" + i).innerHTML = chara_rarity_count[i - 1];
                 }
+
+                 */
             } else if (selected_server === "cn") {
+                character_rarity(selected_chara_all, current_total_operator, total_chara_rarity, chara_rarity_count);
+                /*
                 selected_chara = selected_chara_all;
                 selected_count = current_total_operator;
                 document.querySelectorAll(".selected").forEach((_element) => {
@@ -472,6 +490,7 @@ if (typeof window !== "undefined") {
                     chara_rarity_count[i - 1] = total_chara_rarity[i - 1];
                     document.querySelector("#rarity-" + i).innerHTML = chara_rarity_count[i - 1];
                 }
+                */
             }
 
             localStorage.setItem("selected", selected_chara);
