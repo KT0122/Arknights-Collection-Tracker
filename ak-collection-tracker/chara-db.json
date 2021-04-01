@@ -110,7 +110,7 @@
             "class": "Sniper",
             "rarity": "6",
             "image": "W",
-            "server": "1"
+            "server": "2"
         },
         {
             "id": "15",
@@ -358,7 +358,7 @@
             "class": "Guard",
             "rarity": "4",
             "image": "conviction",
-            "server": "1"
+            "server": "2"
         },
         {
             "id": "46",
@@ -718,7 +718,7 @@
             "class": "Specialist",
             "rarity": "6",
             "image": "phantom",
-            "server": "1"
+            "server": "2"
         },
         {
             "id": "91",
@@ -742,7 +742,7 @@
             "class": "Supporter",
             "rarity": "5",
             "image": "shamare",
-            "server": "1"
+            "server": "2"
         },
         {
             "id": "94",
@@ -894,7 +894,7 @@
             "class": "Guard",
             "rarity": "4",
             "image": "cutter",
-            "server": "1"
+            "server": "2"
         },
         {
             "id": "113",
@@ -942,7 +942,7 @@
             "class": "Guard",
             "rarity": "5",
             "image": "sideroca",
-            "server": "1"
+            "server": "2"
         },
         {
             "id": "119",
@@ -998,7 +998,7 @@
             "class": "Specialist",
             "rarity": "1",
             "image": "thrm-ex",
-            "server": "1"
+            "server": "2"
         },
         {
             "id": "126",
@@ -1030,7 +1030,7 @@
             "class": "Specialist",
             "rarity": "6",
             "image": "weedy",
-            "server": "1"
+            "server": "2"
         },
         {
             "id": "130",
@@ -1038,7 +1038,7 @@
             "class": "Vanguard",
             "rarity": "5",
             "image": "elysium",
-            "server": "1"
+            "server": "2"
         },
         {
             "id": "131",
@@ -1102,7 +1102,7 @@
             "class": "Supporter",
             "rarity": "5",
             "image": "tsukinogi",
-            "server": "1"
+            "server": "2"
         },
         {
             "id": "139",
@@ -1110,7 +1110,7 @@
             "class": "Defender",
             "rarity": "5",
             "image": "asbestos",
-            "server": "1"
+            "server": "2"
         },
         {
             "id": "140",
@@ -1182,7 +1182,7 @@
             "class": "Supporter",
             "rarity": "5",
             "image": "scene",
-            "server": "1"
+            "server": "2"
         },
         {
             "id": "149",
@@ -1190,7 +1190,7 @@
             "class": "Caster",
             "rarity": "5",
             "image": "beeswax",
-            "server": "1"
+            "server": "2"
         },
         {
             "id": "150",
@@ -1198,7 +1198,7 @@
             "class": "Vanguard",
             "rarity": "5",
             "image": "chiave",
-            "server": "1"
+            "server": "2"
         },
         {
             "id": "151",
@@ -1206,7 +1206,7 @@
             "class": "Specialist",
             "rarity": "4",
             "image": "jaye",
-            "server": "1"
+            "server": "2"
         },
         {
             "id": "152",
@@ -1214,7 +1214,7 @@
             "class": "Sniper",
             "rarity": "5",
             "image": "andreana",
-            "server": "1"
+            "server": "2"
         },
         {
             "id": "153",
@@ -1222,7 +1222,7 @@
             "class": "Guard",
             "rarity": "6",
             "image": "thorns",
-            "server": "1"
+            "server": "2"
         },
         {
             "id": "154",
@@ -1230,7 +1230,7 @@
             "class": "Sniper",
             "rarity": "4",
             "image": "aciddrop",
-            "server": "1"
+            "server": "2"
         },
         {
             "id": "155",
@@ -1238,7 +1238,7 @@
             "class": "Caster",
             "rarity": "5",
             "image": "tomimi",
-            "server": "1"
+            "server": "2"
         },
         {
             "id": "156",
@@ -1246,7 +1246,7 @@
             "class": "Defender",
             "rarity": "6",
             "image": "eunectes",
-            "server": "1"
+            "server": "2"
         },
         {
             "id": "157",
@@ -1254,7 +1254,7 @@
             "class": "Guard",
             "rarity": "4",
             "image": "arene",
-            "server": "1"
+            "server": "2"
         },
         {
             "id": "158",
@@ -1262,7 +1262,7 @@
             "class": "Caster",
             "rarity": "5",
             "image": "mint",
-            "server": "1"
+            "server": "2"
         },
         {
             "id": "159",
@@ -1270,7 +1270,7 @@
             "class": "Sniper",
             "rarity": "5",
             "image": "april",
-            "server": "1"
+            "server": "2"
         },
         {
             "id": "160",
@@ -1278,7 +1278,7 @@
             "class": "Guard",
             "rarity": "6",
             "image": "surtr",
-            "server": "1"
+            "server": "2"
         },
         {
             "id": "161",
