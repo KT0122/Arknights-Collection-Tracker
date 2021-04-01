@@ -1,110 +1,98 @@
 const VERSION = "v.1.4.8";
 const CAPTURE_PADDING = "1em";
 
-let selected_server = "cn";
-let current_total_operator = 0;
-let current_total_operator_en = 0;
-let selected_count = 0;
-let selected_chara = [];
-let selected_chara_all = [];
-let selected_chara_all_en = [];
-let total_chara_rarity = [0,0,0,0,0,0];
-let total_chara_rarity_en = [0,0,0,0,0,0];
-let chara_rarity_count = [0,0,0,0,0,0];
-let background_color = "#1b262c"
-
-function character_rarity(character, total, total_count, character_count) {
-    selected_chara = character;
-    selected_count = total;
-    document.querySelectorAll(".selected").forEach((_element) => {
-        _element.innerHTML = total;
-    });
-    for(let i = 1; i <= character_count.length; i++) {
-        character_count[i - 1] = total_count[i - 1];
-        document.querySelector("#rarity-" + i).innerHTML = character_count[i - 1];
-    }
-}
+var selected_server = "cn";
+var current_total_operator = 0;
+var current_total_operator_en = 0;
+var selected_count = 0;
+var selected_chara = [];
+var selected_chara_all = [];
+var selected_chara_all_en = [];
+var total_chara_rarity = [0,0,0,0,0,0];
+var total_chara_rarity_en = [0,0,0,0,0,0];
+var chara_rarity_count = [0,0,0,0,0,0];
+var background_color = "#1b262c"
 
 ready = (fn) => {
-    if (document.readyState !== 'loading') {
+    if (document.readyState != 'loading') {
         fn();
     } else if (document.addEventListener) {
         document.addEventListener('DOMContentLoaded', fn);
     } else {
         document.attachEvent('onreadystatechange', () => {
-        if (document.readyState !== 'loading')
-            fn();
+            if (document.readyState != 'loading')
+                fn();
         });
     }
-} 
+}
 
 let changeBackgroundColor = (c) => {
     background_color = c;
     document.querySelectorAll(".bg-color").forEach((element) => {
         element.style.backgroundColor = c;
-    })      
+    })
     localStorage.setItem("background-color",c);
 }
 
-let loadLocalStorage = () => {   
+let loadLocalStorage = () => {
     let saved_selected = localStorage.getItem("selected");
     let saved_server = localStorage.getItem("server");
     let saved_server_en = localStorage.getItem("server_en");
-    let saved_ign = localStorage.getItem("ign");        
+    let saved_ign = localStorage.getItem("ign");
     let saved_background_color = localStorage.getItem("background-color");
-    
-    if(saved_selected === undefined || saved_selected[0] === "" || saved_selected.length === 0) saved_selected = [];
-    else saved_selected = saved_selected.split(",");    
+
+    if(saved_selected == undefined || saved_selected[0] == "" || saved_selected.length === 0) saved_selected = [];
+    else saved_selected = saved_selected.split(",");
 
     for(let i=0;i<saved_selected.length;i++){
         saved_selected[i] = parseInt(saved_selected[i]);
         let _selected = document.querySelector(`.chara-img-btn[data-id='${saved_selected[i]}']`);
-        let rarity = _selected.getAttribute('data-rarity');    
+        let rarity = _selected.getAttribute('data-rarity');
 
         _selected.style.background = 'white';
-        _selected.setAttribute('data-selected', true); 
+        _selected.setAttribute('data-selected', true);
 
         selected_count++;
         chara_rarity_count[rarity-1]++;
-        
-        document.querySelector("#rarity-"+rarity).innerHTML = chara_rarity_count[rarity-1];   
+
+        document.querySelector("#rarity-"+rarity).innerHTML = chara_rarity_count[rarity-1];
         document.querySelectorAll(".selected").forEach((_element) => {
-            _element.innerHTML = selected_count; 
-        })      
+            _element.innerHTML = selected_count;
+        })
     }
 
     selected_chara = saved_selected;
-    
-    if(saved_server !== "" && saved_server !== undefined) {
-        setServer(saved_server); 
-        if(saved_server === "en") document.querySelector("#server").setAttribute("checked",true);
-    }   
 
-    if(saved_server_en !== "" && saved_server_en !== undefined) {
-        document.querySelector(".selected-server-2").innerHTML = saved_server_en; 
-        if(saved_server_en === "EN"){
-            document.querySelector("#server-en").setAttribute("checked",true);            
-        } else if(saved_server_en === "JP"){
+    if(saved_server != "" && saved_server != undefined) {
+        setServer(saved_server);
+        if(saved_server == "en") document.querySelector("#server").setAttribute("checked",true);
+    }
+
+    if(saved_server_en != "" && saved_server_en != undefined) {
+        document.querySelector(".selected-server-2").innerHTML = saved_server_en;
+        if(saved_server_en == "EN"){
+            document.querySelector("#server-en").setAttribute("checked",true);
+        } else if(saved_server_en == "JP"){
             document.querySelector("#server-jp").setAttribute("checked",true);
-        } else if(saved_server_en === "KR"){
+        } else if(saved_server_en == "KR"){
             document.querySelector("#server-kr").setAttribute("checked",true);
         }
     }
 
-    if(saved_ign !== "" && saved_ign !== undefined){
+    if(saved_ign != "" && saved_ign != undefined){
         document.querySelector('#ign-input').value = saved_ign;
         document.querySelector('#ign').innerHTML = "IGN : " + saved_ign;
-    }    
+    }
 
-    if(saved_background_color !== "" && saved_background_color !== undefined){
+    if(saved_background_color != "" && saved_background_color != undefined){
         changeBackgroundColor(saved_background_color);
     }
 }
 
 let setServer = (s) => {
-    if(s === "en"){
+    if(s == "en"){
         selected_server = "en";
-        
+
         document.querySelectorAll(".chara-img-btn[data-server='1']").forEach((_element) => {
             _element.parentNode.style.display = "none";
         });
@@ -122,7 +110,7 @@ let setServer = (s) => {
         document.querySelectorAll(".selected-server").forEach((_element) => {
             _element.innerHTML = "EN/JP/KR"
         });
-        
+
         document.querySelectorAll(".selected-server-2").forEach((_element) => {
             _element.innerHTML = "EN"
         });
@@ -133,13 +121,13 @@ let setServer = (s) => {
 
         total_chara_rarity_en.forEach((_element, index) => {
             document.querySelector("#rarity-"+(index+1)+"-total").innerHTML = "/"+_element;
-        });        
-    } else if (s === "cn"){
-        selected_server = "cn";         
+        });
+    } else if (s == "cn"){
+        selected_server = "cn";
 
         document.querySelectorAll(".chara-img-btn[data-server='1']").forEach((_element) => {
             _element.parentNode.style.display = "flex";
-        });         
+        });
 
         document.querySelectorAll(".server-non-cn").forEach((_element) => {
             _element.style.display = "none";
@@ -152,10 +140,10 @@ let setServer = (s) => {
         document.querySelectorAll(".total-operator").forEach((_element) => {
             _element.innerHTML = current_total_operator;
         });
-                             
-        total_chara_rarity.forEach((_element, index) => {            
+
+        total_chara_rarity.forEach((_element, index) => {
             document.querySelector("#rarity-"+(index+1)+"-total").innerHTML = "/"+_element;
-        });    
+        });
 
         localStorage.setItem("server_en","");
     }
@@ -190,41 +178,41 @@ let createCharaDiv = (data) => {
 
 let setChangelog = () => {
     fetch(`${location.pathname}changelog.json`)
-    .then(res => res.json())
-    .then(data => {
-        data.changelog.reverse();             
-        data.changelog.forEach(_element => {                               
-            document.querySelectorAll('.changelog-body').forEach((__element) => {
-                __element.insertAdjacentHTML('beforeend', `<b>Version ${_element.version}</b>`);
+        .then(res => res.json())
+        .then(data => {
+            data.changelog.reverse();
+            data.changelog.forEach(_element => {
+                document.querySelectorAll('.changelog-body').forEach((__element) => {
+                    __element.insertAdjacentHTML('beforeend', `<b>Version ${_element.version}</b>`);
+                });
+                _element.list.forEach(change => {
+                    document.querySelector('.changelog-body').insertAdjacentHTML('beforeend', "<br>- "+change);
+                })
+                document.querySelector('.changelog-body').insertAdjacentHTML('beforeend', "<br><br>");
             });
-            _element.list.forEach(change => {                
-                document.querySelector('.changelog-body').insertAdjacentHTML('beforeend', "<br>- "+change);
-            })            
-            document.querySelector('.changelog-body').insertAdjacentHTML('beforeend', "<br><br>");
-        });        
-    });
+        });
 }
 
-let setCharaDiv = () => {        
+let setCharaDiv = () => {
     fetch(`${location.pathname}chara-db.json`)
-    .then(res => res.json())
-    .then(data => {
-        data.chara.forEach(_element => {                   
-            current_total_operator++;                      
-            total_chara_rarity[_element.rarity-1]++;   
-            selected_chara_all.push(parseInt(_element.id));            
-            
-            if(_element.server === 2){
-                selected_chara_all_en.push(parseInt(_element.id));
-                current_total_operator_en++;
-                total_chara_rarity_en[_element.rarity-1]++;        
-            }
-            
-            document.querySelectorAll('.chara-selection-'+_element.rarity).forEach((__element) => {
-                __element.insertAdjacentHTML('beforeend', createCharaDiv(_element));
+        .then(res => res.json())
+        .then(data => {
+            data.chara.forEach(_element => {
+                current_total_operator++;
+                total_chara_rarity[_element.rarity-1]++;
+                selected_chara_all.push(parseInt(_element.id));
+
+                if(_element.server == 2){
+                    selected_chara_all_en.push(parseInt(_element.id));
+                    current_total_operator_en++;
+                    total_chara_rarity_en[_element.rarity-1]++;
+                }
+
+                document.querySelectorAll('.chara-selection-'+_element.rarity).forEach((__element) => {
+                    __element.insertAdjacentHTML('beforeend', createCharaDiv(_element));
+                });
             });
-        });          
-    }).then(() => {                  
+        }).then(() => {
         document.querySelectorAll('.selected-server, .selected-server-2').forEach((_element) => {
             _element.innerHTML = 'CN';
         });
@@ -232,20 +220,20 @@ let setCharaDiv = () => {
         document.querySelectorAll('.total-operator').forEach((_element) => {
             _element.innerHTML = current_total_operator;
         });
-                                   
+
         total_chara_rarity.forEach((element, index) => {
             document.querySelector("#rarity-"+(index+1)+"-total").innerHTML = "/" + element;
         });
 
         loadLocalStorage();
-        
-        document.querySelectorAll('.chara-img-btn').forEach((_element) => {
-            _element.addEventListener('click', () => {                 
-                let selected = _element.getAttribute('data-selected');
-                let rarity = _element.getAttribute('data-rarity');                    
-                let id = parseInt(_element.getAttribute('data-id'));                
 
-                if(selected === 'false'){
+        document.querySelectorAll('.chara-img-btn').forEach((_element) => {
+            _element.addEventListener('click', () => {
+                let selected = _element.getAttribute('data-selected');
+                let rarity = _element.getAttribute('data-rarity');
+                let id = parseInt(_element.getAttribute('data-id'));
+
+                if(selected == 'false'){
                     _element.style.background = 'white';
                     _element.setAttribute('data-selected',true);
                     selected_chara.push(id);
@@ -254,17 +242,17 @@ let setCharaDiv = () => {
                 } else {
                     _element.style.background = 'rgba(0,0,0,0)';
                     _element.setAttribute('data-selected',false);
-                    selected_chara.splice(selected_chara.indexOf(id),1);                
-                    selected_count--;       
+                    selected_chara.splice(selected_chara.indexOf(id),1);
+                    selected_count--;
                     chara_rarity_count[rarity-1]--;
-                }  
-                
-                document.querySelector("#rarity-"+rarity).innerHTML = chara_rarity_count[rarity-1];                          
+                }
+
+                document.querySelector("#rarity-"+rarity).innerHTML = chara_rarity_count[rarity-1];
                 document.querySelectorAll('.selected').forEach((_element) => {
                     _element.innerHTML = selected_count;
-                });  
-                
-                localStorage.setItem("selected", selected_chara);  
+                });
+
+                localStorage.setItem("selected", selected_chara);
             }, false);
         });
     });
@@ -275,42 +263,42 @@ let reset = () => {
     selected_count = 0;
     document.querySelectorAll('.selected').forEach((_element) => {
         _element.innerHTML = selected_count;
-    });  
+    });
 
     chara_rarity_count = [0,0,0,0,0,0];
     for(let i=1;i<=chara_rarity_count.length;i++){
         document.querySelector("#rarity-"+i).innerHTML = "0";
-    }        
+    }
 
     document.querySelectorAll('.chara-img-btn').forEach((_element) => {
         _element.style.background = 'rgba(0,0,0,0)';
         _element.setAttribute("data-selected", false);
     });
 
-    localStorage.setItem("selected", selected_chara);  
+    localStorage.setItem("selected", selected_chara);
 }
 
 let generate = () => {
-    document.querySelector("#generate").style.display = "none";  
+    document.querySelector("#generate").style.display = "none";
     document.querySelector(".loading-overlay").style.display = "block";
-    
-    if(document.querySelector("#ign-input").value === ""){            
+
+    if(document.querySelector("#ign-input").value === ""){
         document.querySelector("#ign").style.display = "none";
-    }        
+    }
 
     document.querySelector("#capture-area").style.paddingLeft = CAPTURE_PADDING;
     document.querySelector("#capture-area").style.paddingRight = CAPTURE_PADDING;
     document.querySelector("#capture-area").style.paddingTop = CAPTURE_PADDING;
-    document.querySelector("#capture-area").style.paddingBottom = CAPTURE_PADDING;    
+    document.querySelector("#capture-area").style.paddingBottom = CAPTURE_PADDING;
 
-    let rarity_to_hide = [];        
+    let rarity_to_hide = [];
     if(!document.querySelector("#keep-unselected").checked){
         document.querySelectorAll('.chara-img-btn').forEach((_element) => {
-            let selected = _element.getAttribute("data-selected");            
-            if(selected === 'false'){
+            let selected = _element.getAttribute("data-selected");
+            if(selected == 'false'){
                 _element.parentNode.style.display = "none";
             } else {
-                _element.style.background = 'rgba(0,0,0,0)';                    
+                _element.style.background = 'rgba(0,0,0,0)';
             }
         });
 
@@ -321,41 +309,41 @@ let generate = () => {
                 });
             }
             rarity_to_hide.push(index);
-        })   
-    }    
+        })
+    }
 
-    window.scrollTo({        
+    window.scrollTo({
         left: 0,
-        top: document.querySelector("body").offsetTop   
+        top: document.querySelector("body").offsetTop
     });
 
     html2canvas(document.querySelector("#capture-area"), {
         backgroundColor	: background_color,
         width: window.innerWidth,
-    }).then(canvas => {                                           
-        let current_date = new Date().format('Ymd-his');             
+    }).then(canvas => {
+        let current_date = new Date().format('Ymd-his');
         let url = canvas.toDataURL("image/jpeg").replace("image/jpeg", "image/octet-stream");
 
         document.querySelector("#result-img").setAttribute("src",url);
-        document.querySelector("#result-a").setAttribute("href",url);                        
+        document.querySelector("#result-a").setAttribute("href",url);
         if(document.querySelector("#ign-input").value !== ""){
             document.querySelector("#result-a").setAttribute("download",`ak-collection-tracker-${document.querySelector("#ign-input").value}-${current_date}.jpg`);
         } else {
             document.querySelector("#result-a").setAttribute("download",`ak-collection-tracker-${current_date}.jpg`);
-        }                
+        }
 
         document.querySelector("#generate").style.display = "initial";
         document.querySelector(".capture-result").style.display = "initial";
-        document.querySelector("#ign").style.display = "flex"; 
-        
+        document.querySelector("#ign").style.display = "flex";
+
         document.querySelectorAll('.chara-img-btn').forEach((_element) => {
             let selected = _element.getAttribute("data-selected");
-            if(selected === 'false'){
+            if(selected == 'false'){
                 _element.parentNode.style.display = "initial";
             } else {
                 _element.style.background = "white";
-            }           
-        });                
+            }
+        });
 
         if(!document.querySelector("#keep-unselected").checked){
             rarity_to_hide.forEach((_element, index) => {
@@ -364,7 +352,7 @@ let generate = () => {
                 });
             })
         }
-                
+
         if(document.querySelector("#server").checked){
             document.querySelectorAll(".chara-img-btn[data-server='1']").forEach((_element) => {
                 _element.parentNode.style.display = "none";
@@ -382,15 +370,15 @@ let generate = () => {
         document.querySelector("#capture-area").style.paddingTop = "0px";
         document.querySelector("#capture-area").style.paddingBottom = "0px";
 
-        window.scrollTo({     
-            behavior: "smooth",   
+        window.scrollTo({
+            behavior: "smooth",
             left: 0,
-            top: document.querySelector("div.capture-result").offsetTop   
+            top: document.querySelector("div.capture-result").offsetTop
         });
     });
 }
 
-if (typeof window !== "undefined") {
+window.ready(() => {
     document.querySelectorAll(".version").forEach((_element) => {
         _element.insertAdjacentHTML('beforeend', VERSION);
     });
@@ -422,13 +410,13 @@ if (typeof window !== "undefined") {
     document.querySelectorAll(".server-radio").forEach((_element) => {
         _element.addEventListener('click', () => {
             let server = _element.getAttribute("id");
-            if(server === "server-en"){
+            if(server == "server-en"){
                 document.querySelector(".selected-server-2").innerHTML = "EN";
                 localStorage.setItem("server_en","EN");
-            } else if(server === "server-jp"){
+            } else if(server == "server-jp"){
                 document.querySelector(".selected-server-2").innerHTML = "JP";
                 localStorage.setItem("server_en","JP");
-            } else if(server === "server-kr"){
+            } else if(server == "server-kr"){
                 document.querySelector(".selected-server-2").innerHTML = "KR";
                 localStorage.setItem("server_en","KR");
             }
@@ -437,28 +425,44 @@ if (typeof window !== "undefined") {
 
     document.querySelector('#reset').addEventListener('click', () => {reset();});
 
-    document.querySelector('#select-all').addEventListener('click', () => {    
+    document.querySelector('#select-all').addEventListener('click', () => {
         document.querySelectorAll(".chara-img-btn").forEach((_element) => {
             _element.setAttribute("data-selected", true);
             _element.style.background = "white"
         });
-        
-        if(selected_server === "en"){
-            character_rarity(selected_chara_all_en, current_total_operator_en, total_chara_rarity_en, chara_rarity_count)
-        } else if(selected_server === "cn"){
-            character_rarity(selected_chara_all, current_total_operator, total_chara_rarity, chara_rarity_count)
+
+        if(selected_server == "en"){
+            selected_chara = selected_chara_all_en;
+            selected_count = current_total_operator_en;
+            document.querySelectorAll(".selected").forEach((_element) => {
+                _element.innerHTML = current_total_operator_en;
+            });
+            for(let i=1;i<=chara_rarity_count.length;i++){
+                chara_rarity_count[i-1] = total_chara_rarity_en[i-1];
+                document.querySelector("#rarity-"+i).innerHTML = chara_rarity_count[i-1];
+            }
+        } else if(selected_server == "cn"){
+            selected_chara = selected_chara_all;
+            selected_count = current_total_operator;
+            document.querySelectorAll(".selected").forEach((_element) => {
+                _element.innerHTML = current_total_operator;
+            });
+            for(let i=1;i<=chara_rarity_count.length;i++){
+                chara_rarity_count[i-1] = total_chara_rarity[i-1];
+                document.querySelector("#rarity-"+i).innerHTML = chara_rarity_count[i-1];
+            }
         }
 
-        localStorage.setItem("selected", selected_chara);            
+        localStorage.setItem("selected", selected_chara);
     })
 
     document.querySelector('#to-top').addEventListener('click', () => {
-        window.scrollTo({  
-            behavior: "smooth",      
+        window.scrollTo({
+            behavior: "smooth",
             left: 0,
             top: document.querySelector("body").offsetTop
         });
     })
 
     document.querySelector('#generate').addEventListener('click', () => {generate();});
-}
+});
