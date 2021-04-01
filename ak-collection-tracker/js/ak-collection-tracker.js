@@ -184,8 +184,8 @@ let createCharaDiv = (data) => {
         <div class="col-lg-2 col-md-3 col-4 text-center">            
             <button class="chara-img-btn" data-selected="false" data-id=${data.id} data-rarity=${data.rarity} data-server=${data.server}>
                 <div class="chara-img-box">
-                    <img class="chara-img disable-drag" src="${location.pathname}/img/ak/avatars/${data.image}.png" loading="lazy" width="128" height="128" alt="${data.name}">
-                    <img class="chara-img-class disable-drag" src="${location.pathname}/img/ak/classes/${class_img}" alt="">                
+                    <img class="chara-img disable-drag" src="${location.pathname}/ak-collection-tracker/img/ak/avatars/${data.image}.png" loading="lazy" width="128" height="128" alt="${data.name}">
+                    <img class="chara-img-class disable-drag" src="${location.pathname}/ak-collection-tracker/img/ak/classes/${class_img}" alt="">                
                 </div>
             </button>
         </div>
