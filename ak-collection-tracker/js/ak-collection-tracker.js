@@ -3,7 +3,7 @@ const CAPTURE_PADDING = "1em";
 
 let selected_server = "cn";
 let current_total_operator = 0;
-let current_total_operator_en = 0;
+let current_total_operator_en = 133;
 let selected_count = 0;
 let selected_chara = [];
 let selected_chara_all = [];
