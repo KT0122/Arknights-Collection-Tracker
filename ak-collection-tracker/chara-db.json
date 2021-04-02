@@ -1327,6 +1327,150 @@
             "rarity": "6",
             "image": "",
             "server": "1"
+        },
+        {
+            "id": "167",
+            "name": "Flint",
+            "class": "Guard",
+            "rarity": "5",
+            "image": "",
+            "server": "2"
+        },
+        {
+            "id": "168",
+            "name": "Aosta",
+            "class": "Sniper",
+            "rarity": "5",
+            "image": "",
+            "server": "1"
+        },
+        {
+            "id": "169",
+            "name": "Archetto",
+            "class": "Sniper",
+            "rarity": "6",
+            "image": "",
+            "server": "1"
+        },
+        {
+            "id": "170",
+            "name": "Ash",
+            "class": "Sniper",
+            "rarity": "6",
+            "image": "",
+            "server": "1"
+        },
+        {
+            "id": "171",
+            "name": "Saga",
+            "class": "Vanguard",
+            "rarity": "6",
+            "image": "",
+            "server": "1"
+        },
+        {
+            "id": "172",
+            "name": "Blitz",
+            "class": "Defender",
+            "rarity": "5",
+            "image": "",
+            "server": "1"
+        },
+        {
+            "id": "173",
+            "name": "Dusk",
+            "class": "Caster",
+            "rarity": "6",
+            "image": "",
+            "server": "1"
+        },
+        {
+            "id": "174",
+            "name": "Frost",
+            "class": "Specialist",
+            "rarity": "5",
+            "image": "",
+            "server": "1"
+        },
+        {
+            "id": "175",
+            "name": "Iris",
+            "class": "Caster",
+            "rarity": "5",
+            "image": "",
+            "server": "1"
+        },
+        {
+            "id": "176",
+            "name": "Kafka",
+            "class": "Specialist",
+            "rarity": "5",
+            "image": "",
+            "server": "1"
+        },
+        {
+            "id": "177",
+            "name": "Mountain",
+            "class": "Guard",
+            "rarity": "6",
+            "image": "",
+            "server": "1"
+        },
+        {
+            "id": "178",
+            "name": "Mr. Nothing",
+            "class": "Specialist",
+            "rarity": "5",
+            "image": "",
+            "server": "1"
+        },
+        {
+            "id": "179",
+            "name": "Pinecone",
+            "class": "Sniper",
+            "rarity": "4",
+            "image": "",
+            "server": "1"
+        },
+        {
+            "id": "180",
+            "name": "Purgatory",
+            "class": "Caster",
+            "rarity": "5",
+            "image": "",
+            "server": "1"
+        },
+        {
+            "id": "181",
+            "name": "Robin",
+            "class": "Specialist",
+            "rarity": "5",
+            "image": "",
+            "server": "1"
+        },
+        {
+            "id": "182",
+            "name": "Rosmontis",
+            "class": "6",
+            "rarity": "Sniper",
+            "image": "",
+            "server": "1"
+        },
+        {
+            "id": "183",
+            "name": "Tachanka",
+            "class": "Guard",
+            "rarity": "5",
+            "image": "",
+            "server": "1"
+        },
+        {
+            "id": "184",
+            "name": "Tuye",
+            "class": "Medic",
+            "rarity": "5",
+            "image": "",
+            "server": "1"
         }
     ]
 }
