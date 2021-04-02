@@ -231,7 +231,7 @@ let setCharaDiv = () => {
                 total_chara_rarity[_element.rarity - 1]++;
                 selected_chara_all.push(parseInt(_element.id));
 
-                if(_element.server === 2){
+                if(_element.server == 2){
                     selected_chara_all_en.push(parseInt(_element.id));
                     current_total_operator_en++;
                     total_chara_rarity_en[_element.rarity - 1]++;
