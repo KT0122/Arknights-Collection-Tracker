@@ -1286,7 +1286,7 @@
             "class": "Defender",
             "rarity": "4",
             "image": "bubble",
-            "server": "1"
+            "server": "2"
         },
         {
             "id": "162",
@@ -1294,7 +1294,7 @@
             "class": "Guard",
             "rarity": "5",
             "image": "whislash",
-            "server": "1"
+            "server": "2"
         },
         {
             "id": "163",
@@ -1302,7 +1302,7 @@
             "class": "Defender",
             "rarity": "6",
             "image": "blemishine",
-            "server": "1"
+            "server": "2"
         },
         {
             "id": "164",
@@ -1342,7 +1342,7 @@
             "class": "Sniper",
             "rarity": "5",
             "image": "aosta",
-            "server": "1"
+            "server": "2"
         },
         {
             "id": "169",
